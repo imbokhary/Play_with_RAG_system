@@ -1,0 +1,246 @@
+{
+  "dataset_version": "1.0.0",
+  "corpus_version": "1.0.0",
+  "questions": [
+    {
+      "id": "q001",
+      "question": "What is RAG?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["intro-to-rag.md"],
+      "relevant_passages": ["RAG stands for Retrieval-Augmented Generation."],
+      "reference_answer": "RAG stands for Retrieval-Augmented Generation: it retrieves relevant external information and supplies it to a language model so the answer is grounded in source documents.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q002",
+      "question": "What does chunk overlap do?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["Chunk overlap repeats the end of one chunk at the start of the next."],
+      "reference_answer": "Overlap preserves context across chunk boundaries by repeating the end of one chunk at the start of the next.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q003",
+      "question": "Why does brute-force search stop scaling?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["retrieval-basics.md"],
+      "relevant_passages": ["Brute-force search compares the query against every stored vector, so cost grows linearly with the number of documents."],
+      "reference_answer": "Brute-force search compares the query against every stored vector, so its cost grows linearly with corpus size.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q004",
+      "question": "What is the capital of Mars?",
+      "type": "unanswerable",
+      "answerable": false,
+      "relevant_sources": [],
+      "relevant_passages": [],
+      "reference_answer": null,
+      "difficulty": "easy"
+    },
+    {
+      "id": "q005",
+      "question": "What is token-aware chunking?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["Token-aware chunking targets a chunk size measured in approximate tokens rather than characters."],
+      "reference_answer": "Token-aware chunking targets a chunk size measured in approximate tokens rather than characters, using a rule of thumb of four characters per token.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q006",
+      "question": "How does Markdown-heading-aware chunking work?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["This strategy splits on Markdown headings (#, ##, etc.), keeping each heading with its following content."],
+      "reference_answer": "Markdown-heading-aware chunking splits on Markdown headings, keeping each heading with its following content, and falls back to fixed-size chunking for large sections.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q007",
+      "question": "What is cosine similarity?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["retrieval-basics.md"],
+      "relevant_passages": ["Cosine similarity measures the angle between two vectors."],
+      "reference_answer": "Cosine similarity measures the angle between two vectors, ranging from -1 (opposite) to 1 (identical direction).",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q009",
+      "question": "What is the rule of thumb for characters per token?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["A common rule of thumb is four characters per token for English text."],
+      "reference_answer": "Approximately four characters per token for English text.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q010",
+      "question": "What are the trade-offs of small vs large chunks?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["Small chunks: precise matches, but each chunk may lack context. Large chunks: more context per chunk, but lower precision and more tokens sent to the model."],
+      "reference_answer": "Small chunks give precise matches but may lack context; large chunks give more context per chunk but lower precision and use more tokens.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q011",
+      "question": "How many steps are in the RAG pipeline?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["intro-to-rag.md"],
+      "relevant_passages": ["1. Load and chunk documents. 2. Create embeddings for each chunk. 3. Store chunks and vectors in an index. 4. Embed the user question. 5. Search the index for the most similar chunks. 6. Compose a prompt with the retrieved context and the question. 7. Ask the language model to answer, citing sources."],
+      "reference_answer": "Seven steps: load and chunk, create embeddings, store chunks and vectors, embed the question, search the index, compose a prompt, and ask the model to answer.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q012",
+      "question": "Why is RAG not a framework?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["intro-to-rag.md"],
+      "relevant_passages": ["RAG is a pipeline, not a framework. You can build it with a few hundred lines of Python."],
+      "reference_answer": "RAG is a pipeline, not a framework — it can be built with plain Python without orchestration libraries.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q013",
+      "question": "Can a PDF contain no extractable text?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["embedding-models.txt"],
+      "relevant_passages": ["V02 handles malformed files including PDFs with no extractable text."],
+      "reference_answer": "Yes, some PDFs contain no extractable text (e.g., scanned images). V02 reports these as ingestion errors.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q014",
+      "question": "What is the purpose of chunk overlap?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["Chunk overlap repeats the end of one chunk at the start of the next so context is not lost across chunk boundaries."],
+      "reference_answer": "Overlap reduces boundary loss by repeating the end of one chunk at the start of the next, at the cost of storing more near-duplicate chunks.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q015",
+      "question": "What does local-first mean for embeddings?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["embedding-models.txt"],
+      "relevant_passages": ["This tutorial uses Ollama as the primary embedding runtime so embeddings stay local and free."],
+      "reference_answer": "Local-first means embeddings are generated locally via Ollama and never leave your machine, unlike remote APIs.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q016",
+      "question": "Why does a language model need RAG?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["intro-to-rag.md"],
+      "relevant_passages": ["A language model knows only what it learned during training. Its knowledge has a cutoff date, it can hallucinate facts, and it cannot see your private documents."],
+      "reference_answer": "Because a model's knowledge has a cutoff date, it can hallucinate facts, and it cannot see your private documents; RAG retrieves relevant documents and feeds them as context.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q017",
+      "question": "What does an embedding model output?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["retrieval-basics.md"],
+      "relevant_passages": ["An embedding model converts a piece of text into a vector (a list of numbers)."],
+      "reference_answer": "A vector (a list of numbers) representing the text; similar texts produce nearby vectors.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q018",
+      "question": "Why must chunks and questions use the same embedding model?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["embedding-models.txt"],
+      "relevant_passages": ["Chunks and questions must be embedded with the same model, because vectors from different models are not comparable."],
+      "reference_answer": "Because vectors from different models are not comparable, so mixing models would make similarity meaningless.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q019",
+      "question": "What must happen when the embedding model changes?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["embedding-models.txt"],
+      "relevant_passages": ["If you change the embedding model, every stored vector was computed with the old model and must be recomputed."],
+      "reference_answer": "Every stored vector must be recomputed (reindex), since they were computed with the old model.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q020",
+      "question": "How does fixed-size chunking work?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["The simplest method cuts text into fixed-size windows (for example, 800 characters) with a fixed step."],
+      "reference_answer": "It cuts text into fixed-size windows (e.g. 800 characters) with a fixed step; every window becomes one chunk with its own embedding.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q021",
+      "question": "What metadata is stored with each chunk?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["Each chunk stores its source file, format, position, and a stable id derived from its content so the same document produces the same chunks on re-ingestion."],
+      "reference_answer": "Source file, format, position, and a stable id derived from the content.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q022",
+      "question": "What does a cosine similarity of 1 indicate?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["retrieval-basics.md"],
+      "relevant_passages": ["Cosine similarity measures the angle between two vectors. A value of 1 means identical direction, 0 means orthogonal, and -1 means opposite."],
+      "reference_answer": "Identical direction between the two vectors.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q023",
+      "question": "When are approximate nearest neighbor indexes such as HNSW used?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["retrieval-basics.md"],
+      "relevant_passages": ["For larger corpora, approximate nearest neighbor indexes such as HNSW are used instead."],
+      "reference_answer": "For larger corpora, where brute-force search becomes too costly.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q024",
+      "question": "Are remote embedding endpoints required in this tutorial?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["embedding-models.txt"],
+      "relevant_passages": ["Remote OpenAI-compatible embedding endpoints are optional and introduced through provider interfaces in later versions."],
+      "reference_answer": "No, they are optional; Ollama is the primary local runtime and remote endpoints arrive in later versions.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q025",
+      "question": "What is the population of Atlantis?",
+      "type": "unanswerable",
+      "answerable": false,
+      "relevant_sources": [],
+      "relevant_passages": [],
+      "reference_answer": null,
+      "difficulty": "easy"
+    }
+  ]
+}
