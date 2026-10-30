@@ -1,0 +1,46 @@
+{
+  "dataset_version": "1.0.0",
+  "corpus_version": "1.0.0",
+  "questions": [
+    {
+      "id": "q001",
+      "question": "What is RAG?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["intro-to-rag.md"],
+      "relevant_passages": ["RAG retrieves relevant external information and supplies it to a language model."],
+      "reference_answer": "RAG stands for Retrieval-Augmented Generation: it retrieves relevant external information and supplies it to a language model so the answer is grounded in source documents.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q002",
+      "question": "What does chunk overlap do?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["chunking.md"],
+      "relevant_passages": ["Overlap repeats the end of one chunk at the start of the next so context is not lost across chunk boundaries."],
+      "reference_answer": "Overlap preserves context across chunk boundaries by repeating the end of one chunk at the start of the next.",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q003",
+      "question": "Why does brute-force search stop scaling?",
+      "type": "factual",
+      "answerable": true,
+      "relevant_sources": ["retrieval-basics.md"],
+      "relevant_passages": ["Brute-force search compares the query against every stored vector, so cost grows linearly with the number of documents."],
+      "reference_answer": "Brute-force search compares the query against every stored vector, so its cost grows linearly with corpus size.",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q004",
+      "question": "What is the capital of Mars?",
+      "type": "unanswerable",
+      "answerable": false,
+      "relevant_sources": [],
+      "relevant_passages": [],
+      "reference_answer": null,
+      "difficulty": "easy"
+    }
+  ]
+}

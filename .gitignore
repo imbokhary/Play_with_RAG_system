@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Generated RAG indexes (per-version, created at runtime)
+index.json
+*.index.json
+
 # Distribution / packaging
 .Python
 build/
