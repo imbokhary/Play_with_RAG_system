@@ -50,7 +50,7 @@ flowchart TD
 |---|---|---|---|
 | V01 | Naive RAG | Understand the complete pipeline end to end | Implemented |
 | V02 | Ingestion and chunking | Parse, clean, and chunk documents reliably | Implemented |
-| V03 | Retrieval engine | Embeddings, vector search, and persistence | Planned |
+| V03 | Retrieval engine | Embeddings, vector search, and persistence | Implemented |
 | V04 | Evaluation harness | Measure retrieval and answer quality, compare versions | Planned |
 | V05 | Hybrid search | BM25, dense retrieval, RRF, metadata filters | Planned |
 | V06 | Advanced RAG | Query rewriting, reranking, parent-child retrieval, abstention | Planned |

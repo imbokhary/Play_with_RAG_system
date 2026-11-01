@@ -1,0 +1,35 @@
+name: V03 CI
+
+on:
+  push:
+    branches: [develop, main]
+    paths: ["v03-retrieval-engine/**"]
+  pull_request:
+    branches: [develop, main]
+    paths: ["v03-retrieval-engine/**"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r v03-retrieval-engine/requirements.txt
+          pip install ruff
+
+      - name: Lint with ruff
+        run: ruff check v03-retrieval-engine
+
+      - name: Run unit tests (no Ollama required)
+        run: python -m unittest discover -s v03-retrieval-engine/tests -v
+
+      - name: Verify evaluation dataset is valid JSON
+        run: |
+          python -c "import json; d=json.load(open('v03-retrieval-engine/tests/fixtures/eval-dataset.json')); assert len(d['questions']) >= 15; print('PASS: eval dataset has', len(d['questions']), 'questions')"

@@ -43,7 +43,7 @@ Dependency rule: add a dependency only when the version teaches a capability tha
 | --- | --- | --- | --- |
 | V01 | Naive RAG | Understand the complete pipeline end to end | Implemented |
 | V02 | Ingestion and chunking | Parse, clean, and chunk documents reliably | Implemented |
-| V03 | Retrieval engine | Embeddings, vector search, and persistence | Planned |
+| V03 | Retrieval engine and persistence | Understand and improve retrieval before adding complex techniques | Implemented |
 | V04 | Evaluation harness | Measure retrieval and answer quality, compare versions | Planned |
 | V05 | Hybrid search | BM25, dense retrieval, RRF, metadata filters | Planned |
 | V06 | Advanced RAG | Query rewriting, reranking, parent-child retrieval, abstention | Planned |
@@ -278,6 +278,8 @@ Experiment: chunk size × overlap vs. retrieval hit rate on the seed dataset and
 
 **Completion summary:** implemented `v02-ingestion-and-chunking/rag.py` (PDF ingestion via pypdf, text cleaning, three chunking strategies: fixed/token/markdown, stable chunk IDs via SHA-1, duplicate detection, ingestion report, malformed-file handling), `config.json`, `requirements.txt` (pypdf), `data/documents/` (5 sample docs incl. a PDF), `tests/test_ingestion.py` (26 unit tests, no Ollama), `tests/fixtures/eval-dataset.json` (24 seed questions), `ruff.toml`, `.github/workflows/v02-ci.yml`, and `v02-ingestion-and-chunking/README.md` (tutorial chapter). Verified: `ruff check` passes; all 26 unit tests pass; end-to-end Ollama run executed successfully (ingest 5 docs → 10 chunks → query with generated answer via `qwen2.5-coder:7b` + `nomic-embed-text:latest`; retrieve-only returns top-k with scores). CLI/JSON contract (`schema_version 1`, `--json`, `--retrieve-only`, `--verbose`, error JSON, stable chunk ids, ingestion report) implemented. Note: config.json uses locally available Ollama models (`nomic-embed-text:latest` for embeddings, `qwen2.5-coder:7b` for chat). Duplicate detection verified: re-ingesting unchanged documents yields 0 new chunks and skips all duplicates.
 
+**Completion summary:** implemented `v03-retrieval-engine/rag.py` (batched/normalized embeddings, cosine + dot product, top-k + score thresholds, persistent index with model/dimension/chunking metadata, incremental ingestion with `--rebuild`, model/dimension validation), `config.json`, `requirements.txt` (pypdf + optional numpy), `data/documents/` (5 sample docs), `tests/test_retrieval.py` (40 unit tests, no Ollama), `ruff.toml`, `.github/workflows/v03-ci.yml`, and `v03-retrieval-engine/README.md` (tutorial chapter). Verified: `ruff check` passes; all 40 unit tests pass; end-to-end Ollama run executed successfully (ingest 5 docs → 10 chunks → query with generated answer via `qwen2.5-coder:7b` + `nomic-embed-text:latest`; retrieve-only returns top-k with scores, score threshold abstention). CLI/JSON contract (`schema_version 1`, `--json`, `--retrieve-only`, `--verbose`, error JSON, stable chunk ids, score threshold, incremental ingestion) implemented. Note: config.json uses locally available Ollama models (`nomic-embed-text:latest` for embeddings, `qwen2.5-coder:7b` for chat). Duplicate detection verified: re-ingesting unchanged documents yields 0 new chunks and skips all duplicates. Index survives restart; re-ingesting unchanged files creates no duplicates; ranking tests are deterministic. Experiments: brute-force Python vs. NumPy, query latency as corpus size grows.
+
 
 #### V03 — Retrieval engine and persistence
 
@@ -417,7 +419,7 @@ Give the agent **one milestone at a time**. Each ends with tests, documentation,
 | --- | --- | --- | --- |
 | M0 | Before V01 | Repository foundation | Implemented |
 | M1 | V01 | First end-to-end RAG | Implemented |
-| M2 | V02–V03 | Ingestion and retrieval correctness | In progress |
+| M2 | V02–V03 | Ingestion and retrieval correctness | Completed |
 | M3 | V04 | Evaluation harness | Planned |
 | M4 | V05–V06 | Retrieval quality and advanced techniques | Planned |
 | M5 | V07–V08 | Architecture, API, persistence, jobs | Planned |
