@@ -53,7 +53,7 @@ flowchart TD
 | V03 | Retrieval engine | Embeddings, vector search, and persistence | Implemented |
 | V04 | Evaluation harness | Measure retrieval and answer quality, compare versions | Planned |
 | V05 | Hybrid search | BM25, dense retrieval, RRF, metadata filters | Planned |
-| V06 | Advanced RAG | Query rewriting, reranking, parent-child retrieval, abstention | Planned |
+| V06 | Advanced RAG | Query rewriting, reranking, parent-child retrieval, abstention | Implemented |
 | V07 | Clean architecture | Testable, typed, modular Python package | Planned |
 | V08 | API, persistence and jobs | FastAPI service, SQLite, streaming, ingestion jobs | Planned |
 | V09 | Security and observability | Prompt injection, access control, logs, metrics, reliability | Planned |
