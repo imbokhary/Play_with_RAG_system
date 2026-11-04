@@ -46,7 +46,7 @@ Dependency rule: add a dependency only when the version teaches a capability tha
 | V03 | Retrieval engine and persistence | Understand and improve retrieval before adding complex techniques | Implemented |
 | V04 | Evaluation harness | Measure retrieval and answer quality, compare versions | Implemented |
 | V05 | Hybrid search | BM25, dense retrieval, RRF, metadata filters | Implemented |
-| V06 | Advanced RAG | Query rewriting, reranking, parent-child retrieval, abstention | Planned |
+| V06 | Advanced RAG | Query rewriting, reranking, parent-child retrieval, abstention | Implemented |
 | V07 | Clean architecture | Testable, typed, modular Python package | Planned |
 | V08 | API, persistence and jobs | FastAPI service, SQLite, streaming, ingestion jobs | Planned |
 | V09 | Security and observability | Prompt injection, access control, logs, metrics, reliability | Planned |
