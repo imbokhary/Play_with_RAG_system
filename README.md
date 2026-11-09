@@ -55,8 +55,8 @@ flowchart TD
 | V05 | Hybrid search | BM25, dense retrieval, RRF, metadata filters | Planned |
 | V06 | Advanced RAG | Query rewriting, reranking, parent-child retrieval, abstention | Implemented |
 | V07 | Clean architecture | Testable, typed, modular Python package | Implemented |
-| V08 | API, persistence and jobs | FastAPI service, SQLite, streaming, ingestion jobs | Planned |
-| V09 | Security and observability | Prompt injection, access control, logs, metrics, reliability | Planned |
+| V08 | API, persistence and jobs | FastAPI service, SQLite, streaming, ingestion jobs | Implemented |
+| V09 | Security and observability | Prompt injection, access control, logs, metrics, reliability | Implemented |
 | V10 | Deployment and capstone | Docker, CI/CD, load tests, final integrated application | Planned |
 
 Update statuses only as versions are implemented, tested, and released (see `ROADMAP.md`).
