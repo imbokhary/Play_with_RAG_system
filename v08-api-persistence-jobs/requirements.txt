@@ -1,0 +1,10 @@
+pypdf>=4.0.0
+fastapi>=0.100.0
+uvicorn>=0.27.0
+sqlalchemy>=2.0.0
+alembic>=1.10.0
+pydantic>=2.5.0
+"""
+numpy is optional (used for NumPy helpers / benchmarks). Install for experiments:
+numpy>=1.26.0
+"""
